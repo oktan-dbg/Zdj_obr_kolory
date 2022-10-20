@@ -1,20 +1,18 @@
 package com.example.myapplication_dbg
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.ColorFilter
+import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.view.View
 import android.widget.*
-import androidx.core.app.ActivityCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     private var pictureIV : ImageView? = null
@@ -32,7 +30,9 @@ class MainActivity : AppCompatActivity() {
         //val capture = findViewById<Button>(R.id.zdjecie_btn);
         val obrot_seek = findViewById<SeekBar>(R.id.obrot_seekBar);
         val przezroczystosc = findViewById<SeekBar>(R.id.przezroczystosc_seekBar);
-        val kolor_seek = findViewById<SeekBar>(R.id.kolor_seekBar);
+        val zielony_seek = findViewById<SeekBar>(R.id.zielony_seekBar);
+        val czerwony_seek = findViewById<SeekBar>(R.id.czerwony_seekBar);
+        val niebieski_seek = findViewById<SeekBar>(R.id.niebieski_seekBar);
         val zdjecie = findViewById<ImageView>(R.id.zdjecie_img)
         //zdjecie.setRotation(180F)
         obrot_seek.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
@@ -67,10 +67,129 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        kolor_seek.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+        zielony_seek.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, p2: Boolean) {
-                zdjecie.alpha=progress.toFloat()
+                //zdjecie.alpha=progress.toFloat()
 
+                val redValue = czerwony_seek.getProgress() as Float / 255
+                val greenValue = zielony_seek.getProgress() as Float / 255
+                val blueValue = niebieski_seek.getProgress() as Float / 255
+
+                val colorMatrix = floatArrayOf(
+                    redValue,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    greenValue,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    blueValue,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    1f,
+                    0f
+                )
+
+                val colorFilter: ColorFilter = ColorMatrixColorFilter(colorMatrix)
+                zdjecie.setColorFilter(colorFilter)
+                //zdjecie.setRotation(180.0F)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
+
+        })
+
+        czerwony_seek.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, p2: Boolean) {
+                //zdjecie.alpha=progress.toFloat()
+                val redValue = czerwony_seek.getProgress() as Float / 255
+                val greenValue = zielony_seek.getProgress() as Float / 255
+                val blueValue = niebieski_seek.getProgress() as Float / 255
+
+                val colorMatrix = floatArrayOf(
+                    redValue,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    greenValue,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    blueValue,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    1f,
+                    0f
+                )
+
+                val colorFilter: ColorFilter = ColorMatrixColorFilter(colorMatrix)
+                zdjecie.setColorFilter(colorFilter)
+                //zdjecie.setRotation(180.0F)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
+
+        })
+
+        niebieski_seek.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, p2: Boolean) {
+                //zdjecie.alpha=progress.toFloat()
+                val redValue = czerwony_seek.getProgress() as Float / 255
+                val greenValue = zielony_seek.getProgress() as Float / 255
+                val blueValue = niebieski_seek.getProgress() as Float / 255
+
+                val colorMatrix = floatArrayOf(
+                    redValue,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    greenValue,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    blueValue,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    0f,
+                    1f,
+                    0f
+                )
+
+                val colorFilter: ColorFilter = ColorMatrixColorFilter(colorMatrix)
+                zdjecie.setColorFilter(colorFilter)
                 //zdjecie.setRotation(180.0F)
             }
 
