@@ -51,6 +51,39 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        przezroczystosc.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, p2: Boolean) {
+                zdjecie.alpha=progress.toFloat()
+                //zdjecie.setRotation(180.0F)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
+
+        })
+
+        kolor_seek.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, p2: Boolean) {
+                zdjecie.alpha=progress.toFloat()
+
+                //zdjecie.setRotation(180.0F)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
+
+        })
+
         initViews();
         RegisterListeners();
     }
