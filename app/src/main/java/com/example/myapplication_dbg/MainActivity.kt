@@ -17,24 +17,52 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+    private var pictureIV : ImageView? = null
 
     private lateinit var photoFile: File
     lateinit var currentPhotoPath: String
     private val PICTURE_FROM_CAMERA: Int = 1
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val capture = findViewById<Button>(R.id.zdjecie_btn);
+        //val capture = findViewById<Button>(R.id.zdjecie_btn);
         val obrot_seek = findViewById<SeekBar>(R.id.obrot_seekBar);
         val przezroczystosc = findViewById<SeekBar>(R.id.przezroczystosc_seekBar);
         val kolor_seek = findViewById<SeekBar>(R.id.kolor_seekBar);
+        val zdjecie = findViewById<ImageView>(R.id.zdjecie_img)
+        //zdjecie.setRotation(180F)
+        obrot_seek.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, p2: Boolean) {
+                zdjecie.setRotation(progress.toFloat())
+                //zdjecie.setRotation(180.0F)
+            }
 
-        capture.setOnClickListener{
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
 
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
+
+        })
+
+        initViews();
+        RegisterListeners();
+    }
+    private fun initViews(){
+        pictureIV = findViewById(R.id.zdjecie_img)
+    }
+    private fun RegisterListeners(){
+        //val capture = findViewById<Button>(R.id.zdjecie_btn);
+        pictureIV!!.setOnClickListener {
+            takePicture()
         }
-
+        //zdjecie = findViewById(R.id.zdjecie_img)
     }
     private fun takePicture(){
         val pictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)

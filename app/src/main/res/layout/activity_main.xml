@@ -10,7 +10,7 @@
         android:id="@+id/zdjecie_img"
         android:layout_width="355dp"
         android:layout_height="300dp"
-        android:contentDescription="zdjecie_img"
+        android:src="@drawable/brek"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
