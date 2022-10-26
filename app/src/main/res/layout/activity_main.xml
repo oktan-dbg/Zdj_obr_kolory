@@ -33,6 +33,7 @@
         android:id="@+id/obrot_seekBar"
         android:layout_width="250dp"
         android:layout_height="39dp"
+        android:max="360"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.826"
@@ -49,7 +50,8 @@
         app:layout_constraintHorizontal_bias="0.826"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.667" />
+        app:layout_constraintVertical_bias="0.667"
+        android:max="100"/>
 
     <SeekBar
         android:id="@+id/zielony_seekBar"
